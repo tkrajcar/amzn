@@ -7,7 +7,7 @@ Designed to be hosted on [Heroku](http://www.heroku.com/).
 Assuming you already have a Heroku account set up and the Heroku tools installed, you need a [bit.ly](bit.ly) account.
 
 1. Clone this repo - `git clone git@github.com:tkrajcar/amzn.git amzn && cd amzn`
-2. Create the Heroku app - `heroku create my-amzn'
+2. Create the Heroku app - `heroku create my-amzn`
 3. Push the code - `git push heroku master`
 4. Configure your affiliate tag - `heroku config:set AMAZON_AFFILIATE_TAG=mytag-20`
 5. Configure your bit.ly username - `heroku config:set BITLY_LOGIN=mylogin`
