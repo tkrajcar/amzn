@@ -1,0 +1,7 @@
+%p ASIN: #{@asin}
+%p
+  New URL:
+  %input{readonly: "readonly", value: @new_url, onclick: "this.select()", size: 75}
+%p
+  Shortened URL:
+  %input{readonly: "readonly", value: @short_url, onclick: "this.select()", size: 25}

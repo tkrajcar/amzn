@@ -1,0 +1,13 @@
+%h1 Amzn Generator
+%p Using tag: #{settings.tag}
+-if settings.bitly_login == "INVALID"
+  %p Your bitly login is invalid. You ened to set the environment variable BITLY_LOGIN to a valid login.
+-if settings.bitly_api_key == "INVALID"
+  %p
+    Your bitly API key is invalid. You need to set the environment variable BITLY_API_KEY to a valid key after visiting
+    %a{href: "https://bitly.com/a/your_api_key"} bit.ly's API key page
+
+%form{method: "post"}
+  %label URL:
+  %input{name: "post[url]"}
+  %input{type: "submit"}
