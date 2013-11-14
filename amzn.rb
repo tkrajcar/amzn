@@ -22,7 +22,7 @@ end
 
 post '/' do
   raise NoURLProvided, 'Need to provide a URL, sucka!' unless url = params[:post]['url']
-  raise NoASINFound, "Sorry, an ASIN couldn't be extracted from #{url}" unless  asin_array = url.match(/\/([A-Z0-9]{10})/)
+  raise NoASINFound, "Sorry, an ASIN couldn't be extracted from #{url}" unless asin_array = url.match(/\/([A-Z0-9]{10})/)
   @asin = asin_array.captures.first
   @new_url = "http://www.amazon.com/exec/obidos/ASIN/#{@asin}/#{settings.tag}"
   @short_url = bitly_client.shorten(@new_url).short_url
