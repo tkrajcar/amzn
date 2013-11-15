@@ -1,5 +1,5 @@
 # amzn
-A simple Sinatra application designed to help you quickly generate shortened (example: http://amzn.to/HTgg1c) Amazon product links with your affiliate tag.
+A simple Sinatra application designed to help you quickly generate shortened (example: http://amzn.to/HTgg1c) Amazon product links with your affiliate tag. Exposes both a simple webform and an API.
 
 Designed to be hosted on [Heroku](http://www.heroku.com/).
 

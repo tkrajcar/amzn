@@ -11,3 +11,18 @@
   %label URL:
   %input{name: "post[url]"}
   %input{type: "submit"}
+
+%p
+  For verification, it's wise to check all of your URLs via the
+  %a{href: "https://affiliate-program.amazon.com/gp/associates/network/tools/link-checker/main.html"} Amazon Link Checker
+  before using them.
+%p You can also hit this as an API - try it out:
+-bookurl = 'http://www.amazon.com/Microsoft-Flight-Simulator-Pilots-Training-ebook/dp/B00BOZGMXY/'
+-txturl = "#{request.url}api?url=#{bookurl}"
+-jsonurl = "#{request.url}api.json?url=#{bookurl}"
+%p
+  Text-only (just gives you the shortened URL):
+  %a{href: txturl, style: "font-family:monospace"}=txturl
+%p
+  JSON (gives a full response object):
+  %a{href: jsonurl, style: "font-family:monospace"}=jsonurl
