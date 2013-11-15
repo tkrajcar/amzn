@@ -1,0 +1,2 @@
+class NoASINFoundError < StandardError
+end

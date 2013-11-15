@@ -1,6 +1,7 @@
 require 'bundler/setup'
 require 'sinatra'
-require 'bitly'
+require 'require_all'
+require_all 'lib'
 
 configure do
   set :tag, ENV["AMAZON_AFFILIATE_TAG"] || "CHANGE-ME"
@@ -8,26 +9,15 @@ configure do
   set :bitly_api_key, ENV["BITLY_API_KEY"] || "INVALID"
 end
 
-Bitly.configure do |config|
-  config.api_version = 3
-  config.login = settings.bitly_login
-  config.api_key = settings.bitly_api_key
-end
-
-bitly_client = Bitly.client
+generator = AmazonURLGenerator.new(settings.bitly_login, settings.bitly_api_key, settings.tag)
 
 get '/' do
   haml :form
 end
 
 post '/' do
-  raise NoURLProvided, 'Need to provide a URL, sucka!' unless url = params[:post]['url']
-  raise NoASINFound, "Sorry, an ASIN couldn't be extracted from #{url}" unless asin_array = url.match(/\/([A-Z0-9]{10})/)
-  @asin = asin_array.captures.first
-  @new_url = "http://www.amazon.com/exec/obidos/ASIN/#{@asin}/#{settings.tag}"
-  @short_url = bitly_client.shorten(@new_url).short_url
+  raise NoURLProvidedError, 'Need to provide a URL, sucka!' unless url = params[:post]['url']
+  raise NoASINFoundError, "Sorry, an ASIN couldn't be extracted from #{url}" unless asin = ASINExtractor.extract(url)
+  @results = generator.generate(asin)
   haml :results
 end
-
-class NoASINFound < StandardError; end
-class NoURLProvided < StandardError; end

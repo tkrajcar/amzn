@@ -1,0 +1,2 @@
+class NoURLProvidedError < StandardError
+end
