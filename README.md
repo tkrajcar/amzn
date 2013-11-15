@@ -11,5 +11,5 @@ Assuming you already have a Heroku account set up and the Heroku tools installed
 3. Push the code - `git push heroku master`
 4. Configure your affiliate tag - `heroku config:set AMAZON_AFFILIATE_TAG=mytag-20`
 5. Configure your bit.ly username - `heroku config:set BITLY_LOGIN=mylogin`
-6. Configure your bit.ly [api key](https://bitly.com/a/your_api_key") - `heroku config:set BITLY_API_KEY=abcde12345`
+6. Configure your bit.ly [api key](https://bitly.com/a/your_api_key) - `heroku config:set BITLY_API_KEY=abcde12345`
 7. Use and enjoy - `heroku open`
