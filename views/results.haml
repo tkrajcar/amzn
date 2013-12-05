@@ -2,6 +2,10 @@
 %p
   New URL:
   %input{readonly: "readonly", value: @results[:url], onclick: "this.select()", size: 75}
+  =facebook_share(@results[:url])
+  =twitter_share(@results[:url])
 %p
   Shortened URL:
   %input{readonly: "readonly", value: @results[:short_url], onclick: "this.select()", size: 25}
+    =facebook_share(@results[:short_url])
+    =twitter_share(@results[:short_url])

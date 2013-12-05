@@ -39,3 +39,13 @@ def parse_and_generate(url)
   raise NoASINFoundError, "Sorry, an ASIN couldn't be extracted from #{url}" unless asin = ASINExtractor.extract(url)
   settings.generator.generate(asin)
 end
+
+helpers do
+  def facebook_share(url)
+    "<a href='http://www.facebook.com/sharer.php?u=#{URI.encode(url)}' target='_blank'>Share on Facebook</a>"
+  end
+
+  def twitter_share(url)
+    "<a href='https://www.twitter.com/share?url=#{URI.encode(url)}' target='_blank'>Tweet</a>"
+  end
+end
